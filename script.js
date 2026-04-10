@@ -27,32 +27,82 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Project Filtering
+// Project Filtering & Show More Functionality
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
+const showMoreBtn = document.getElementById("showMoreBtn");
+const showMoreContainer = document.querySelector(".show-more-container");
+
+let visibleLimit = 3;
+let currentFilter = "all";
+
+function updateProjectsVisibility() {
+  let filteredCount = 0;
+  let visibleCount = 0;
+
+  projectCards.forEach((card) => {
+    const category = card.getAttribute("data-category");
+    const matchesFilter = currentFilter === "all" || category === currentFilter;
+
+    if (matchesFilter) {
+      filteredCount++;
+      if (visibleCount < visibleLimit) {
+        card.style.display = "block";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  // Update Show More Button Visibility
+  if (filteredCount <= 3) {
+    showMoreContainer.style.display = "none";
+  } else {
+    showMoreContainer.style.display = "block";
+    if (visibleLimit >= filteredCount) {
+      showMoreBtn.textContent = "Show Less";
+    } else {
+      showMoreBtn.textContent = "Show More";
+    }
+  }
+}
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     // Remove active class from all buttons
     filterButtons.forEach((btn) => btn.classList.remove("active"));
-
     // Add active class to clicked button
     button.classList.add("active");
 
-    const filterValue = button.getAttribute("data-filter");
-
-    projectCards.forEach((card) => {
-      if (
-        filterValue === "all" ||
-        card.getAttribute("data-category") === filterValue
-      ) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
+    currentFilter = button.getAttribute("data-filter");
+    visibleLimit = 3; // Reset limit when filter changes
+    updateProjectsVisibility();
   });
 });
+
+showMoreBtn.addEventListener("click", () => {
+  const visibleCards = Array.from(projectCards).filter(card => {
+    const category = card.getAttribute("data-category");
+    return currentFilter === "all" || category === currentFilter;
+  });
+
+  if (visibleLimit >= visibleCards.length) {
+    visibleLimit = 3;
+    showMoreBtn.textContent = "Show More";
+    // Optional: Scroll back to top of projects or keep position?
+    // User didn't ask, but safe to just toggle.
+  } else {
+    visibleLimit = visibleCards.length; // Show all
+    showMoreBtn.textContent = "Show Less";
+  }
+  updateProjectsVisibility();
+});
+
+// Initial load
+updateProjectsVisibility();
 
 // Form Submission
 const contactForm = document.getElementById("contactForm");
@@ -177,8 +227,8 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", () => {
   document.querySelectorAll('.progress').forEach(bar => {
     const percent = bar.getAttribute('data-percent');
-    gsap.fromTo(bar, 
-      { width: "0%" }, 
+    gsap.fromTo(bar,
+      { width: "0%" },
       { width: percent + "%", duration: 1.2, ease: "power2.out" }
     );
   });
@@ -197,19 +247,19 @@ function createImageModal() {
   // Add click event to all project images
   document.querySelectorAll('.project-img img').forEach(img => {
     img.style.cursor = 'pointer';
-    img.addEventListener('click', function() {
+    img.addEventListener('click', function () {
       const modalContent = document.createElement('div');
       modalContent.className = 'modal-wrapper';
-      
+
       const closeButton = document.createElement('button');
       closeButton.className = 'modal-close';
       closeButton.innerHTML = '&times;';
-      
+
       const modalImg = document.createElement('img');
       modalImg.src = this.src;
       modalImg.alt = this.alt;
       modalImg.className = 'modal-content';
-      
+
       modalContent.appendChild(closeButton);
       modalContent.appendChild(modalImg);
       modal.innerHTML = '';
@@ -224,14 +274,14 @@ function createImageModal() {
   });
 
   // Close modal when clicking outside the image
-  modal.addEventListener('click', function(e) {
+  modal.addEventListener('click', function (e) {
     if (e.target === modal) {
       modal.classList.remove('active');
     }
   });
 
   // Close modal with Escape key
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       modal.classList.remove('active');
     }
@@ -240,3 +290,18 @@ function createImageModal() {
 
 // Initialize image zoom functionality
 window.addEventListener('load', createImageModal);
+
+
+
+// Contact Section
+
+function sendMail() {
+  let prams = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value,
+  }
+  emailjs.send('service_iu9y3ed', 'template_i8viyeq', params).then(alert("Message sent successfully !"))
+
+}

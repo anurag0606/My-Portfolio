@@ -181,10 +181,10 @@ section {
 
 /* Hero Section */
 .hero {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
-  padding-top: 3rem;
+  padding-top: 7rem;
 }
 
 .hero .container {
@@ -271,7 +271,7 @@ section {
 .about-text p {
   margin-bottom: 1rem;
   text-align: justify;
-  margin-right: 62px;
+  /* margin-right: 62px; */
 }
 
 .personal-info {
@@ -294,6 +294,7 @@ section {
 .skills {
   margin-top: 10px;
 }
+
 .skills-content {
   text-align: center;
 }
@@ -305,13 +306,13 @@ section {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 2rem;
 }
 
 .skill-card {
   background: white;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   box-shadow: var(--shadow);
   transition: var(--transition);
@@ -351,39 +352,38 @@ section {
 }
 
 .fab.fa-powerbi {
-  -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powerbi.svg")
-    no-repeat center;
-  mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powerbi.svg")
-    no-repeat center;
+  -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powerbi.svg") no-repeat center;
+  mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powerbi.svg") no-repeat center;
 
-  background-color: #e97627; /* Official Power BI Yellow */
+  background-color: #e97627;
+  /* Official Power BI Yellow */
   display: inline-block;
-  width: 40px; /* adjust size */
+  width: 40px;
+  /* adjust size */
   height: 40px;
   background-size: contain;
 }
 
 .fab.fa-tableau {
   /* Tableau SVG (monochrome) */
-  -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tableau.svg")
-    no-repeat center;
-  mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tableau.svg")
-    no-repeat center;
+  -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tableau.svg") no-repeat center;
+  mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tableau.svg") no-repeat center;
 
-  background-color: #e97627; /* Tableau official orange */
+  background-color: #e97627;
+  /* Tableau official orange */
   display: inline-block;
-  width: 40px; /* size */
+  width: 40px;
+  /* size */
   height: 40px;
   background-size: contain;
 }
 
 .fab.fa-jira {
-  -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jirasoftware.svg")
-    no-repeat center;
-  mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jirasoftware.svg")
-    no-repeat center;
+  -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jirasoftware.svg") no-repeat center;
+  mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jirasoftware.svg") no-repeat center;
 
-  background-color: #0052cc; /* Jira blue */
+  background-color: #0052cc;
+  /* Jira blue */
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -394,6 +394,7 @@ section {
 .projects {
   margin-top: 20px;
 }
+
 .project-filters {
   display: flex;
   justify-content: center;
@@ -434,7 +435,8 @@ section {
 /* Project Card Image Container */
 .project-img {
   width: 100%;
-  height: 200px; /* Adjust height as needed */
+  height: 200px;
+  /* Adjust height as needed */
   overflow: hidden;
   border-radius: 1rem 1rem 0 0;
   background: #f8f9fa;
@@ -468,9 +470,11 @@ section {
   transition: transform 0.3s ease;
   /* border-radius: 1rem; */
 }
+
 .project-img {
   padding: 5px;
 }
+
 .news {
   padding: 3px;
 }
@@ -483,17 +487,21 @@ section {
 
 /* Dark mode styles for project images */
 body.dark-mode .project-img {
-  background: #1a1a1a; /* Dark background for project images */
+  background: #1a1a1a;
+  /* Dark background for project images */
 }
 
 body.dark-mode .project-card {
-  background: #262b33; /* Keep existing dark mode card background */
+  background: #262b33;
+  /* Keep existing dark mode card background */
 }
 
 /* Update modal background for dark mode */
 body.dark-mode .modal {
-  background: rgba(0, 0, 0, 0.95); /* Slightly darker modal background */
+  background: rgba(0, 0, 0, 0.95);
+  /* Slightly darker modal background */
 }
+
 /* Modal styles for image zoom */
 /* Add or update modal styles */
 .modal {
@@ -519,7 +527,8 @@ body.dark-mode .modal {
   max-height: 90vh;
   display: block;
   object-fit: contain;
-  border-radius: 15px; /* Added border radius */
+  border-radius: 15px;
+  /* Added border radius */
 }
 
 .modal-wrapper {
@@ -528,7 +537,8 @@ body.dark-mode .modal {
   max-height: 90vh;
   background: transparent;
   padding: 10px;
-  border-radius: 15px; /* Added border radius */
+  border-radius: 15px;
+  /* Added border radius */
 }
 
 .modal-close {
@@ -584,6 +594,14 @@ body.dark-mode .modal {
 .project-links {
   display: flex;
   gap: 1rem;
+}
+
+.show-more-container {
+  text-align: center;
+  margin-top: 3rem;
+  width: 100%;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 /* Contact Section */
@@ -838,14 +856,14 @@ body.dark-mode .secondary-btn:hover {
   }
 
   section {
-    padding: 4rem 0;
+    /* padding: 2rem 0; */
   }
 
   .hero .container,
   .about-content,
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .hero-content {
@@ -898,6 +916,15 @@ body.dark-mode .secondary-btn:hover {
 
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .hero-image {
+    display: flex;
+    order: -1;
+  }
+
+  .about-image {
+    display: none;
   }
 
   .hero-content h1 {
@@ -955,7 +982,8 @@ body.dark-mode .secondary-btn:hover {
 a .btn small-btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;  /* default blue */
+  background-color: #007bff;
+  /* default blue */
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
@@ -966,7 +994,8 @@ a .btn small-btn {
 
 /* Hover effect only for View Project */
 a .btn small-btn:hover {
-  background-color: #0056b3;  /* darker blue */
+  background-color: #0056b3;
+  /* darker blue */
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
